@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+Korrila React Receipts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Korilla is a Korean barbecue taco truck that makes thousands of hungry customers happy every year.
 
-## Available Scripts
+Their CEO is thinking of updating their short order tracking system using React.
 
-In the project directory, you can run:
+Build a prototype of this short order receipts tracker.
+Part 1: Get Started
 
-### `npm start`
+Create a new folder for this project. (npx create-react-app korilla-receipts)
+Part 2: Sample Receipts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You'll be rendering some sample receipts:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+const receipt1 =
+  {
+    person: 'Karolin',
+    order: {
+      main: 'Burrito',
+      protein: 'Organic Tofu',
+      rice: 'Purple Rice',
+      sauce: 'Green Crack',
+      toppings: [
+        'Baby Bok Choy', 'Cucumber Kimchi'
+      ],
+      drink: 'Korchata',
+      cost: 22
+    },
+    paid: false
+  }
+const receipt2 = {
+  person: 'Jerrica',
+  order: {
+    main: 'Rice Bowl',
+    protein: 'Ginger Soy Chix',
+    rice: 'Sticky Rice',
+    sauce: 'Korilla',
+    toppings: [
+      'Yuzu Pickled Sweet Pepper', 'Kale'
+    ],
+    drink: 'Korchata',
+    cost: 19
+  },
+  paid: false
+}
+const receipt3 = {
+  person: 'Matt',
+  order: {
+    main: 'Salad Bowl',
+    protein: 'Organic Tofu',
+    rice: 'none',
+    sauce: "K'lla",
+    toppings: [
+      'Blue Potato Salad', 'Pico De Gallo', 'Red Kimchi'
+    ],
+    drink: 'Sparkling Blood Orange Soda',
+    cost: 20
+  },
+  paid: true
+}
 
-### `npm test`
+    Make a Receipt component that renders the first receipt's
+        person
+        order
+            main
+            protein
+            rice
+            sauce
+            drink
+            cost
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Hungry for More: render the toppings
 
-### `npm run build`
+Make two more Receipt components so that you get a view like this (a little css provided for clarity, but not required)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+korilla receipts rendered Mark
+Part 3: Conditionally Render the receipts if they have been paid or not
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Right now, all the receipts are not paid ( paid: false)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Set up a ternary operator to display the receipt if it has not been paid.
 
-### `npm run eject`
+Then go into the receipt data and change the value to true and check that the receipt will not display
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Matt has settled his bill
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To see the React tab in the Dev Console, you have to download it as a Chrome Extension. (Check out the React Developer Tools (Links to an external site.) extension)
+ Hint 3
+Part 4: Refactor for Dynamic Rendering
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3 receipts is pretty limiting. Let's put them in an array and then map over them for rendering.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Update your code so it renders the same, but instead of hard coding 3 receipts, it maps over the array.
 
-## Learn More
+const receipts = [
+  {
+    person: 'Karolin',
+    order: {
+      main: 'Burrito',
+      protein: 'Organic Tofu',
+      rice: 'Purple Rice',
+      sauce: 'Green Crack',
+      toppings: [
+        'Baby Bok Choy', 'Cucumber Kimchi'
+      ],
+      drink: 'Korchata',
+      cost: 22
+    },
+    paid: false
+  },
+  {
+    person: 'Mark',
+    order: {
+      main: 'Rice Bowl',
+      protein: 'Ginger Soy Chix',
+      rice: 'Sticky Rice',
+      sauce: 'Korilla',
+      toppings: [
+        'Yuzu Pickled Sweet Pepper', 'Kale'
+      ],
+      drink: 'Korchata',
+      cost: 19
+    },
+    paid: false
+  },
+  {
+    person: 'Matt',
+    order: {
+      main: 'Salad Bowl',
+      protein: 'Organic Tofu',
+      rice: 'none',
+      sauce: "K'lla",
+      toppings: [
+        'Blue Potato Salad', 'Pico De Gallo', 'Red Kimchi'
+      ],
+      drink: 'Sparkling Blood Orange Soda',
+      cost: 20
+    },
+    paid: true
+  }
+]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
